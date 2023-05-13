@@ -48,6 +48,12 @@ public class TestClass1 {
         softAssert.assertAll();
     }
 
+
+    @Test (priority = 4)
+    public void test4 (){
+        System.out.println("Start test 4");
+    }
+
     @AfterClass (alwaysRun = true)
     public void afterClassMethod (){
         System.out.println("Starting the after class method!");
