@@ -1,0 +1,69 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+
+    // https://mvnrepository.com/artifact/org.testng/testng
+    testImplementation 'org.testng:testng:7.7.1'
+
+    // https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+    implementation 'org.seleniumhq.selenium:selenium-java:4.8.1'
+
+    compileOnly group: 'org.projectlombok', name: 'lombok', version: '1.18.24'
+
+
+
+
+}
+
+test {
+    //useJUnitPlatform()
+    def groups = System.getProperty('groups', 'group1')
+    useTestNG(){
+
+
+        includeGroups 'group1','group2','group3'
+        //excludeGroups 'regression'
+        testLogging.showStandardStreams = true
+        useDefaultListeners = true
+        //listeners << 'com.listeners.TestListener'
+
+        testLogging {
+            events "PASSED", "FAILED", "SKIPPED"
+        }
+
+    }
+
+    reports.html.enabled(false)
+
+}
+
+
+task smokeTests(type: Test) { // we define a task with name ‘smokeTests’
+    useTestNG() {
+        useDefaultListeners = true
+        testLogging.showStandardStreams = true
+
+        //suites 'src/test/suite.xml'
+        includeGroups 'group1' // We define the group name by using ‘includeGroups’ parameter.
+    }
+
+    testLogging {
+        events "PASSED", "FAILED", "SKIPPED"
+    }
+
+    reports.html.enabled(false)
+
+    //reports.html.destination(file("$buildDir/html"))
+
+}

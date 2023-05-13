@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="test.TestClass1" tests="3" skipped="0" failures="0" errors="0" timestamp="2023-05-13T09:37:17" hostname="DESKTOP-GMJBA7V" time="0.03">
+  <properties/>
+  <testcase name="test2" classname="test.TestClass1" time="0.013"/>
+  <testcase name="test1" classname="test.TestClass1" time="0.005"/>
+  <testcase name="test3" classname="test.TestClass1" time="0.002"/>
+  <system-out><![CDATA[Starting before class method!
+Starting test 2
+Starting test 1
+Starting test 3
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
